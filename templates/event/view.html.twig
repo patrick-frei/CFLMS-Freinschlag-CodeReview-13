@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello ProductController!{% endblock %}
+
+{% block body %}
+  <h1>{{ event.name }} <small class="my-3">{{ event.type }}</small></h1>
+  <img src="{{ base64('../var/uploads/' ~ event.image) }}" class="img-thumbnail" alt="{{ event.name }}">
+  <p class="my-3">{{ event.description }}</p>
+  <p class="my-3">{{ event.datetime|date('Y-m-d H:i') }}</p>
+  <p class="my-3">{{ event.street }}, {{ event.ZIPCode }} {{ event.city }}</p>
+  <a href="{{ event.URL }}">{{ event.URL }}</a>
+  <br>
+  <a href="mailto:{{ event.email }}">{{ event.email }}</a>
+  <p class="my-3">Capacity: {{ event.capacity }} People</p>
+{% endblock %}

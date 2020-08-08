@@ -1,0 +1,25 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello ProductController!{% endblock %}
+
+{% block body %}
+    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-4">
+        {% for event in  events  %}
+            <div class="col">
+                <div class="card">
+                    <img src="{{ base64('../var/uploads/' ~ event.image) }}" class="card-img-top" alt="{{ event.name }}">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ event.name }}</h5>
+                        <p class="card-text mb-1">{{ event.datetime|date('Y-m-d H:i') }}</p>
+                        <p class="card-text">{{ event.street }}, {{ event.ZIPCode }} {{ event.city }}</p>
+                        <a href="/events/{{ event.id }}" class="btn btn-info my-1">More info</a>
+                        <br>
+                        <a href="/remove-event/{{ event.id }}" class="btn btn-danger my-1">Remove</a>
+                        <br>
+                        <a href="/edit-event/{{ event.id }}" class="btn btn-secondary my-1">Edit</a>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}
